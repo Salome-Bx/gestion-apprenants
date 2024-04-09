@@ -1,36 +1,32 @@
 <?php
 
 namespace src\Models;
-// Définir une classe Database inhéritable.
 use PDO;
 use PDOException;
 
 final class Database
 {
-    // Définir deux propriétés :
-    //  - $DB, qui contiendra la connexion à la base de données
-    //  - $config, qui contiendra le chemin vers le fichier de configuration.
+   
     private $DB;
     private $config;
 
-    // Dans le constructeur, définir $this->config, puis le requérir.
+    
 
     public function __construct()
     {
         $this->config = __DIR__ . '/../../config.php';
         require_once $this->config;
 
-        // Appeler également la méthode connexionDB()
+        
         $this->connexionDB();
     }
 
 
 
-    //Créer la méthode connexionDB()
+    
     private function connexionDB(): void
     {
-        // Elle aura pour but de mettre dans $this->DB l'objet PDO avec les infos définies dans le fichier config.php.
-        // On utilisera try catch.
+        
         try {
             $dsn = "mysql:host=" . DB_HOST . ";dbname=" . DB_NAME;
             $this->DB = new PDO($dsn, DB_USER, DB_PWD);
@@ -40,24 +36,21 @@ final class Database
     }
 
 
-    // faire un getter pour récupérer $this->DB depuis ailleurs.
+    
     public function getDB()
     {
         return $this->DB;
     }
 
 
-    // EXERCICE 3
-    // Faire la méthode initializeDB()
-    // Elle devra avant tout faire appel à la méthode testIfTableFilmsExists()
-    // Dans le cas ou cette méthode renvoie true, on arrête là.
+    
     public function initializeDB(): string
     {
-        if ($this->testIfTableFilmsExists()) {
+        if ($this->testIfTableUserExists()) {
             return "La base de données semble déjà remplie.";
             die();
 
-            // Sinon, on charge les fichiers sql du dossier migrations, puis on exécute la requête sql. Comme il peut y avoir plusieurs migrations, on fait ça dans une boucle.
+            
         } else {
             try {
                 $i = 0;
@@ -85,13 +78,13 @@ final class Database
     //Vérifie si la table Films existe déjà dans la BDD
     // Écrire la méthode privée testIfTableFilmsExists()
     // Elle devra renvoyer un booléen.
-    private function testIfTableFilmsExists(): bool
+    private function testIfTableUserExists(): bool
     {
         // La requête sql commencera avec SHOW TABLES ...
-        $existant = $this->DB->query('SHOW TABLES FROM ' . DB_NAME . ' like \'' . PREFIXE . 'films\'')->fetch();
+        $existant = $this->DB->query('SHOW TABLES FROM ' . DB_NAME . ' like \'' . PREFIXE . 'gestion_apprenants\'')->fetch();
         // On regardera dans le tableau obtenu si on trouve films.
 
-        if ($existant !== false && $existant[0] == PREFIXE . "films") {
+        if ($existant !== false && $existant[0] == PREFIXE . "gestion_apprenants") {
 
             // Pour comprendre comment traiter le résultat, faire un var_dump du retour de votre requête sql.
             return true;
