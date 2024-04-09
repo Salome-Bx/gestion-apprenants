@@ -1,0 +1,1 @@
+UPDATE `simp_user` SET `Password_User` = '$2y$10$umNctzHOo7IXkxkdTZ8ul.lK7gaVeehwBOnaMiQVHAYt3F5nGL/9e' WHERE `simp_user`.`Id_User` = 1; 
