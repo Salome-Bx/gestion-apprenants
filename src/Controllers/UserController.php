@@ -23,12 +23,24 @@ class UserController
 
     public function login($email, $password)
     {
-        // Ce controller est très simple
-        // j'instancie le UserRepostory, pour me servir
-        // de sa fonction login en lui passant l'email et le password,
-        // Je retourne sa réponse
-        $userRepo = new UserRepository();
-        $reponse = $userRepo->login($email, $password);
-        echo json_encode($reponse);
+        if (isset($email) && isset($password) && !empty($password) && !empty($email)) {
+            if ($User = $this->UserRepo->login($email, $password)) {
+                if (password_verify($password, $User->getPassword())) {
+                
+                // j'instancie le UserRepostory, pour me servir
+                // de sa fonction login en lui passant l'email et le password,
+                // Je retourne sa réponse
+                    $userRepo = new UserRepository();
+                    $reponse = $userRepo->login($email, $password);
+                    echo json_encode($reponse);
+                } else {
+                var_dump("ne marche pas");
+                }
+            die;
+            }
+        }
     }
+
+    
+    
 }

@@ -20,20 +20,24 @@ class UserRepository
     }
 
 
-    
-    public function login($email, $password): array
+
+    public function login($email): array
     {
-        $sql = "SELECT * FROM " . PREFIXE . "user WHERE Email_User = :Email_User AND Password_User = :Password_User";
+        $sql = "SELECT * FROM " . PREFIXE . "user WHERE Email_User = :Email_User";
 
         $statement = $this->DB->prepare($sql);
         $statement->execute([
-            ":Email_User" => $email,
-            ":Password_User" => $password
-
+            ":Email_User" => $email
         ]);
         return $statement->fetch(PDO::FETCH_ASSOC);
-        var_dump($statement);
     }
+
+
+    
+
+
+
+
 
     // public function saveUser(User $user)
     // {
@@ -53,34 +57,23 @@ class UserRepository
     //     return $statement;
     // }
 
-    public function userExist(User $user)
-    {
-        $sql = "SELECT * FROM " . PREFIXE . "user WHERE Email_User = :Email_User";
-        $email = $user->getEmailUser();
-        $statement = $this->DB->prepare($sql);
-        $statement->execute([':Email_User' => $email]);
+    // public function userExist(User $user)
+    // {
+    //     $sql = "SELECT * FROM " . PREFIXE . "user WHERE Email_User = :Email_User";
+    //     $email = $user->getEmailUser();
+    //     $statement = $this->DB->prepare($sql);
+    //     $statement->execute([':Email_User' => $email]);
 
-        if ($statement->rowCount() > 0) {
-            return true;
-        } else {
-            return false;
-        }
-    }
+    //     if ($statement->rowCount() > 0) {
+    //         return true;
+    //     } else {
+    //         return false;
+    //     }
+    // }
+
+
 
    
-
-    // public function getThisUser($email): User|bool
-    // {
-    //     $sql = "SELECT * FROM " . PREFIXE . "user WHERE mail = :mail";
-
-    //     $statement = $this->DB->prepare($sql);
-    //     $statement->bindParam(':mail', $email);
-    //     $statement->execute();
-    //     $statement->setFetchMode(PDO::FETCH_CLASS, User::class);
-    //     $retour = $statement->fetch();
-
-    //     return $retour;
-    // }
 
     // public function getThisUserById($id): User|bool
     // {

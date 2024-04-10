@@ -22,6 +22,7 @@ switch ($route) {
             $password = htmlspecialchars(strip_tags(trim($user["password"])));
         }
         $reponse = $UserController->login($email, $password);
+        
         //  Je retourne au format JSON la réponse du controller
         echo json_encode($reponse);
 
