@@ -5,8 +5,23 @@ session_start();
 use src\Models\Database;
 use src\Models\User;
 use src\Repositories\UserRepository;
+use src\Services\Reponse;
 
 
+class UserController
+{
+    private $UserRepo;
+    
+
+    use Reponse;
+
+    public function __construct()
+    {
+        
+        $this->UserRepo = new UserRepository();
+        
+    }
+}
 
 //Récupération éléments formulaire inscription
 
