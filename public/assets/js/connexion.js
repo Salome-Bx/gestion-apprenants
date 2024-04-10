@@ -27,11 +27,13 @@ async function handleLoginConnexion() {
         body: JSON.stringify(loginCrendentials),
     };
 
-    fetch("../../../src/Controllers/UserController.php", params)
+    fetch("http://gestion-apprenants/connexion", params)
         .then((res) => res.text())
         .then((data) => {
             let jsonData = JSON.parse(data);
+            let conteneurConnexion = document.querySelector('#conteneurConnexion');
             if (jsonData) {
+                console.log(conteneurConnexion);
                 // Check status property while considering possible encoding differences
                 // if (jsonData.status.trim().toLowerCase() === "succes") {
                 //     // Handle success
