@@ -20,6 +20,21 @@ class UserRepository
     }
 
 
+    
+    public function login($email, $password): array
+    {
+        $sql = "SELECT * FROM " . PREFIXE . "user WHERE Email_User = :Email_User AND Password_User = :Password_User";
+
+        $statement = $this->DB->prepare($sql);
+        $statement->execute([
+            ":Email_User" => $email,
+            ":Password_User" => $password
+
+        ]);
+        return $statement->fetch(PDO::FETCH_ASSOC);
+        var_dump($statement);
+    }
+
     // public function saveUser(User $user)
     // {
     //     $sql = "INSERT INTO " . PREFIXE . "user (lastName, firstName, password, address, telephone, User_Role, mail) VALUES (:lastName, :firstName, :password, :address, :telephone, :User_Role, :mail)";
@@ -52,18 +67,7 @@ class UserRepository
         }
     }
 
-    public function login(string $email_user)
-
-    {
-
-        $sql = "SELECT * FROM " . PREFIXE . "user WHERE Email_User = :Email_User";
-        //vérifie si email utilisateur correspond avec email en BD
-        $statement = $this->DB->prepare($sql);
-        $statement->execute([':Email_User' => $email_user]);
-        $response = $statement->fetch(PDO::FETCH_ASSOC);
-
-        return $response;
-    }
+   
 
     // public function getThisUser($email): User|bool
     // {
