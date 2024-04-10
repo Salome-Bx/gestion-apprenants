@@ -27,30 +27,17 @@ async function handleLoginConnexion() {
         body: JSON.stringify(loginCrendentials),
     };
 
-    fetch("http://gestion-apprenants/connexion", params)
-        .then((res) => res.text())
+    fetch("http://gestion-apprenants", params)
+        .then((res) => res.json())
         .then((data) => {
-            let jsonData = JSON.parse(data);
-            let conteneurConnexion = document.querySelector('#conteneurConnexion');
-            if (jsonData) {
-                console.log(conteneurConnexion);
-                // Check status property while considering possible encoding differences
-                // if (jsonData.status.trim().toLowerCase() === "succes") {
-                //     // Handle success
-                //     modalConnexion.classList.add("hidden");
-                //     modalToDoList.classList.remove("hidden");
-                //     btnCompteHeader.classList.remove("hidden");
-                // } else if (jsonData.status.trim().toLowerCase() === "erreur") {
-                //     // Handle error
-                //     document.querySelector(".messageErreur").innerText =
-                //         "Le mot de passe est erroné";
-                //     setTimeout(function () {
-                //         document.querySelector(".messageErreur").innerText = "";
-                //     }, 2000);
-                // }
-            } else {
-                // Handle the case where data or data.status is not defined
-                console.error("Invalid data received from server:", data);
-            }
-        });
+            console.log("bibibiibbibi")
+            // if (data.status === "success") {
+            //     loginData.innerHTML = data.message + "<br> Vous allez etre redirigé";
+            //     if (data.userRole == 5 || data.userRole == 6) {
+            //     }
+            // } else {
+            //     loginData.innerHTML = data.message;
+            // }
+        })
+        .catch((error) => console.error("Error:", error));
 }
