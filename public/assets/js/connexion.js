@@ -30,7 +30,7 @@ async function handleLoginConnexion() {
     fetch("http://gestion-apprenants", params)
         .then((res) => res.json())
         .then((data) => {
-            console.log("bibibiibbibi")
+            console.log("succes")
             // if (data.status === "success") {
             //     loginData.innerHTML = data.message + "<br> Vous allez etre redirigé";
             //     if (data.userRole == 5 || data.userRole == 6) {
