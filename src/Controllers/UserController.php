@@ -11,36 +11,43 @@ class UserController
 {
     private $UserRepo;
     private $ReservationRepo;
+    private $User;
+
 
     use Reponse;
 
     public function __construct()
     {
-        // Instanciez les 3 propriétés avec les repositories concernés.
         $this->UserRepo = new UserRepository();
-        // $this->ReservationRepo = new ReservationRepository();
     }
 
-    public function login($email, $password)
+
+
+    public function login()   
     {
-        if (isset($email) && isset($password) && !empty($password) && !empty($email)) {
-            if ($User = $this->UserRepo->login($email, $password)) {
-                if (password_verify($password, $User->getPassword())) {
-                
-                // j'instancie le UserRepostory, pour me servir
-                // de sa fonction login en lui passant l'email et le password,
-                // Je retourne sa réponse
-                    $userRepo = new UserRepository();
-                    $reponse = $userRepo->login($email, $password);
-                    echo json_encode($reponse);
-                } else {
-                var_dump("ne marche pas");
-                }
-            die;
+        $data = file_get_contents("php://input");
+        $user = json_decode($data, true);
+
+        $email = $user["email"];
+        $password = $user["password"];
+        
+        $userRepo = new UserRepository();
+        $userBD = $userRepo->findByMail($email);
+            
+        if ($userBD) {
+            http_response_code(200);
+            if (password_verify($password, $userBD['Password_User'])) {
+               $this->render("dashboard");
+            //    ob_clean();
+            echo json_encode(["status" => "succes", "message" => "Connexion réussie"]);
+            } else {
+                http_response_code(401);
+                echo json_encode(["status" => "erreur", "message" => "Mot de passe erroné"]);
             }
+        } else {
+            http_response_code(401);
+            echo json_encode(["status" => "erreur", "message" => "Vous n'êtes pas enregistré"]);
         }
     }
 
-    
-    
 }

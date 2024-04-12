@@ -1,0 +1,23 @@
+
+.succes,
+.echec {
+  text-align: center;
+  padding-top: 20px;
+  
+}
+
+.echec {
+ color: rgb(254, 51, 5);
+}
+
+.succes {
+ color: rgb(51, 82, 237);
+}
+
+.visible {
+  display: block;
+}
+
+.invisible {
+  display: none;
+}
