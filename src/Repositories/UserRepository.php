@@ -20,20 +20,47 @@ class UserRepository
     }
 
 
-
-    public function login($email): array
+    // sert à vérifier si l'email existe déjà en DB
+    public function findByMail(string $mail): array|bool
     {
         $sql = "SELECT * FROM " . PREFIXE . "user WHERE Email_User = :Email_User";
+        
 
         $statement = $this->DB->prepare($sql);
         $statement->execute([
-            ":Email_User" => $email
+            ":Email_User" => $mail
         ]);
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
 
-
     
+    // sert à ajouter un apprenant en DB
+    public function InsertIntoDB ($user) {
+
+        $email = htmlspecialchars(strip_tags(trim($user["email"])));
+        $password = htmlspecialchars(strip_tags(trim($user["password"])));
+        
+        
+
+	    $sql = "INSERT * INTO ". PREFIXE . "user (Id_User, LastName_User, FirstName_User, Password_User, Activated_User, Email_User, Id_Role) VALUES (:Id_User, :LastName_User, :FirstName_User, :Password_User, :Activated_User, :Email_User, :Id_Role)";
+        
+    
+        $statement = $this->DB->prepare($sql);
+        $statement->execute([
+            ":Id_User" => $user->getIdUser(),
+            ":LastName_User" => $user->getLastNameUser(),
+            ":FirstName_User" => $user->getFirstNameUser(),
+            ":Password_User" => $user->getPasswordUser(),
+            ":Activated_User" => $user->isActivatedUser(),
+            ":Email_User" => $user->getEmailUser(),
+            ":Id_Role" => $user->getIdRole()
+        ]);
+        return $statement->fetch(PDO::FETCH_ASSOC);
+
+
+    }
+
+
 
 
 
@@ -73,7 +100,7 @@ class UserRepository
 
 
 
-   
+
 
     // public function getThisUserById($id): User|bool
     // {
