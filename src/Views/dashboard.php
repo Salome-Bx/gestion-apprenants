@@ -1,7 +1,11 @@
 <?php include __DIR__ . '/includes/header.php'; ?>
 
-<form action="<?= HOME_URL ?>dashboard">
+<?php
+$infos_user = unserialize($infos_user);
 
+?>
+
+<form action="<?= HOME_URL ?>dashboard">
     <div class="relative flex min-h-screen text-gray-800 antialiased flex-col justify-center overflow-hidden bg-gray-50 px-4 sm:py-6">
         <main>
             <div class="md:flex no-wrap md:-mx-2">
@@ -22,10 +26,15 @@
                     </div>
 
                     <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8 sm:block ">
-                        <div class="overflow-hidden px-5 py-3 border border-gray-200  md:rounded-lg">
+                        <div class="overflow-hidden px-5 py-  border border-gray-200  md:rounded-lg">
                             <div class="min-w-full">
                                 <div class="flex justify-between">
-                                    <h2 class="font-medium text-gray-800 text-2xl inline-block">DWMM 2</h2>
+                                    <h2 class="font-medium text-gray-800 text-2xl inline-block"> DWMM 2</h2>
+                                    <div class="nom"><?=$infos_user->getLastNameUser()?></div>
+
+
+
+
                                     <p class="justify-end font-medium text-gray-800 justify-items-end inline font-bold">Date</p>
                                 </div>
                                 <p class="font-medium text-gray-800 ">15 participants</p>
@@ -71,4 +80,4 @@
 
 
 
-    <?php include __DIR__ . '/includes/footer.php'; ?>
+<?php include __DIR__ . '/includes/footer.php'; ?>

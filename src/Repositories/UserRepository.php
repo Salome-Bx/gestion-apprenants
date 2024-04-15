@@ -21,7 +21,7 @@ class UserRepository
 
 
     // sert à vérifier si l'email existe déjà en DB
-    public function findByMail(string $mail): array|bool
+    public function findByMail(string $mail): User|bool
     {
         $sql = "SELECT * FROM " . PREFIXE . "user WHERE Email_User = :Email_User";
         
@@ -30,35 +30,37 @@ class UserRepository
         $statement->execute([
             ":Email_User" => $mail
         ]);
-        return $statement->fetch(PDO::FETCH_ASSOC);
+        $statement->setFetchMode(PDO::FETCH_CLASS, User::class);
+        $retour = $statement->fetch();
+        return $retour;
     }
 
     
-    // sert à ajouter un apprenant en DB
-    public function InsertIntoDB ($user) {
+    // // sert à ajouter un apprenant en DB
+    // public function InsertIntoDB ($user) {
 
-        $email = htmlspecialchars(strip_tags(trim($user["email"])));
-        $password = htmlspecialchars(strip_tags(trim($user["password"])));
+    //     $email = htmlspecialchars(strip_tags(trim($user["email"])));
+    //     $password = htmlspecialchars(strip_tags(trim($user["password"])));
         
         
 
-	    $sql = "INSERT * INTO ". PREFIXE . "user (Id_User, LastName_User, FirstName_User, Password_User, Activated_User, Email_User, Id_Role) VALUES (:Id_User, :LastName_User, :FirstName_User, :Password_User, :Activated_User, :Email_User, :Id_Role)";
+	//     $sql = "INSERT * INTO ". PREFIXE . "user (Id_User, LastName_User, FirstName_User, Password_User, Activated_User, Email_User, Id_Role) VALUES (:Id_User, :LastName_User, :FirstName_User, :Password_User, :Activated_User, :Email_User, :Id_Role)";
         
     
-        $statement = $this->DB->prepare($sql);
-        $statement->execute([
-            ":Id_User" => $user->getIdUser(),
-            ":LastName_User" => $user->getLastNameUser(),
-            ":FirstName_User" => $user->getFirstNameUser(),
-            ":Password_User" => $user->getPasswordUser(),
-            ":Activated_User" => $user->isActivatedUser(),
-            ":Email_User" => $user->getEmailUser(),
-            ":Id_Role" => $user->getIdRole()
-        ]);
-        return $statement->fetch(PDO::FETCH_ASSOC);
+    //     $statement = $this->DB->prepare($sql);
+    //     $statement->execute([
+    //         ":Id_User" => $user->getIdUser(),
+    //         ":LastName_User" => $user->getLastNameUser(),
+    //         ":FirstName_User" => $user->getFirstNameUser(),
+    //         ":Password_User" => $user->getPasswordUser(),
+    //         ":Activated_User" => $user->isActivatedUser(),
+    //         ":Email_User" => $user->getEmailUser(),
+    //         ":Id_Role" => $user->getIdRole()
+    //     ]);
+    //     return $statement->fetch(PDO::FETCH_ASSOC);
 
 
-    }
+    // }
 
 
 

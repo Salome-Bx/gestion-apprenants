@@ -1,6 +1,9 @@
 <div class="succes <?= isset($succes) ? "visible" : "invisible" ?>">
     <p><?= isset($succes) ?? $succes ?></p>
 </div>
+<div class="echec <?= isset($erreur) ? "visible" : "invisible" ?>">
+    <p><?= isset($erreur) ?? $erreur ?></p>
+</div>
 
 <div id="blocLogs" class="px-8 py-6">
     <label class="block">Email *</label>

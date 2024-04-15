@@ -5,13 +5,13 @@ namespace src\Models;
 use src\Services\Hydratation;
 
 class User {
-    private int $Id_User;
-    private string $LastName_User;
-    private string $FirstName_User;
-    private string $Password_User;
-    private bool $Activated_User;
-    private string $Email_User;
-    private int $Id_Role;
+    private int $IdUser;
+    private string $LastNameUser;
+    private string $FirstNameUser;
+    private string $PasswordUser;
+    private bool $ActivatedUser;
+    private string $EmailUser;
+    private int $IdRole;
 
 
     use Hydratation;
@@ -20,127 +20,127 @@ class User {
 
 
     /**
-     * Get the value of Id_User
+     * Get the value of IdUser
      */
     public function getIdUser(): int
     {
-        return $this->Id_User;
+        return $this->IdUser;
     }
 
     /**
-     * Set the value of Id_User
+     * Set the value of IdUser
      */
-    public function setIdUser(int $Id_User): self
+    public function setIdUser(int $IdUser): self
     {
-        $this->Id_User = $Id_User;
+        $this->IdUser = $IdUser;
 
         return $this;
     }
 
     /**
-     * Get the value of LastName_User
+     * Get the value of LastNameUser
      */
     public function getLastNameUser(): string
     {
-        return $this->LastName_User;
+        return $this->LastNameUser;
     }
 
     /**
-     * Set the value of LastName_User
+     * Set the value of LastNameUser
      */
-    public function setLastNameUser(string $LastName_User): self
+    public function setLastNameUser(string $LastNameUser): self
     {
-        $this->LastName_User = $LastName_User;
+        $this->LastNameUser = $LastNameUser;
 
         return $this;
     }
 
     /**
-     * Get the value of FirstName_User
+     * Get the value of FirstNameUser
      */
     public function getFirstNameUser(): string
     {
-        return $this->FirstName_User;
+        return $this->FirstNameUser;
     }
 
     /**
-     * Set the value of FirstName_User
+     * Set the value of FirstNameUser
      */
-    public function setFirstNameUser(string $FirstName_User): self
+    public function setFirstNameUser(string $FirstNameUser): self
     {
-        $this->FirstName_User = $FirstName_User;
+        $this->FirstNameUser = $FirstNameUser;
 
         return $this;
     }
 
     /**
-     * Get the value of Password_User
+     * Get the value of PasswordUser
      */
     public function getPasswordUser(): string
     {
-        return $this->Password_User;
+        return $this->PasswordUser;
     }
 
     /**
-     * Set the value of Password_User
+     * Set the value of PasswordUser
      */
-    public function setPasswordUser(string $Password_User): self
+    public function setPasswordUser(string $PasswordUser): self
     {
-        $this->Password_User = $Password_User;
+        $this->PasswordUser = $PasswordUser;
 
         return $this;
     }
 
     /**
-     * Get the value of Activated_User
+     * Get the value of ActivatedUser
      */
     public function isActivatedUser(): bool
     {
-        return $this->Activated_User;
+        return $this->ActivatedUser;
     }
 
     /**
-     * Set the value of Activated_User
+     * Set the value of ActivatedUser
      */
-    public function setActivatedUser(bool $Activated_User): self
+    public function setActivatedUser(bool $ActivatedUser): self
     {
-        $this->Activated_User = $Activated_User;
+        $this->ActivatedUser = $ActivatedUser;
 
         return $this;
     }
 
     /**
-     * Get the value of Email_User
+     * Get the value of EmailUser
      */
     public function getEmailUser(): string
     {
-        return $this->Email_User;
+        return $this->EmailUser;
     }
 
     /**
-     * Set the value of Email_User
+     * Set the value of EmailUser
      */
-    public function setEmailUser(string $Email_User): self
+    public function setEmailUser(string $EmailUser): self
     {
-        $this->Email_User = $Email_User;
+        $this->EmailUser = $EmailUser;
 
         return $this;
     }
 
     /**
-     * Get the value of Id_Role
+     * Get the value of IdRole
      */
     public function getIdRole(): int
     {
-        return $this->Id_Role;
+        return $this->IdRole;
     }
 
     /**
-     * Set the value of Id_Role
+     * Set the value of IdRole
      */
-    public function setIdRole(int $Id_Role): self
+    public function setIdRole(int $IdRole): self
     {
-        $this->Id_Role = $Id_Role;
+        $this->IdRole = $IdRole;
 
         return $this;
     }

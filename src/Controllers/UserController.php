@@ -36,14 +36,17 @@ class UserController
             
         if ($userBD) {
             http_response_code(200);
-            if (password_verify($password, $userBD['Password_User'])) {
-               $this->render("dashboard");
-            //    ob_clean();
-            echo json_encode(["status" => "succes", "message" => "Connexion réussie"]);
-            } else {
-                http_response_code(401);
-                echo json_encode(["status" => "erreur", "message" => "Mot de passe erroné"]);
-            }
+            
+                if (password_verify($password, $userBD->getPasswordUser())) {
+                    $_SESSION['connecté'] = TRUE;
+                    $_SESSION['user'] = serialize($userBD);
+                $this->render("dashboard", ["infos_user" => $_SESSION['user']]);
+                //    ob_clean();
+                echo json_encode(["status" => "succes", "message" => "Connexion réussie"]);
+                } else {
+                    http_response_code(401);
+                    echo json_encode(["status" => "erreur", "message" => "Mot de passe erroné"]);
+                }
         } else {
             http_response_code(401);
             echo json_encode(["status" => "erreur", "message" => "Vous n'êtes pas enregistré"]);
