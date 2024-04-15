@@ -23,30 +23,50 @@ document.getElementById('btnConnexion').addEventListener('click', (e) => {
     fetch(HOME_URL, params)
         .then((res) => {
             if (res.status === 200) {
-                
+
                 return res.text();
-                
+
             } else {
-                
+
+                showMessage("Mauvais email et/ou mot de passe", "echec");
+                hideMessage('succes');
+
                 return res.json();
 
             }
         })
         .then((data) => {
             if (data !== null && typeof data === 'object') {
-                console.log(data)
                 
 
+
             } else if (data !== null && typeof data === 'string') {
+
+                
                 document.body.innerHTML = data;
-                console.log(data)
-                console.log("je suis ici");
+                
+                
             }
 
 
         })
         .catch((error) => console.error("Error:", error));
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 function showMessage(message, encartClasse) {
@@ -64,3 +84,15 @@ function hideMessage(encartClasse) {
 
     encart.querySelector('p').innerText = '';
 }
+
+
+
+
+
+
+
+
+
+
+
+
