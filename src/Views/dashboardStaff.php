@@ -1,11 +1,7 @@
-<?php include __DIR__ . '/includes/header.php'; ?>
-
-<?php
-$infos_user = unserialize($infos_user);
-
-
+<?php include __DIR__ . '/includes/header.php';
 ?>
 
+<!-- PROMOS -->
 
 <div class="relative flex min-h-screen text-gray-800 antialiased flex-col justify-center overflow-hidden bg-gray-50 px-4 sm:py-6">
     <main>
@@ -22,44 +18,6 @@ $infos_user = unserialize($infos_user);
                     </ul>
                 </div>
 
-                <!-- ACCUEIL COURS DU JOUR -->
-                <div id="dashboardAccueil">
-                    <div class="bg-white p-3 rounded-sm">
-                        <div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
-                            <span class="text-xl tracking-wide px-2">Cours du jour</span>
-
-                        </div>
-                    </div>
-
-                    <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8 sm:block ">
-                        <div class="overflow-hidden px-5 py-  border border-gray-200  md:rounded-lg">
-                            <div class="min-w-full">
-                                <div class="flex justify-between">
-                                    <h2 class="font-medium text-gray-800 text-2xl inline-block"> DWMM 2</h2>
-                                    <div class="nom"><?= $infos_user->getLastNameUser() ?></div>
-
-
-
-
-
-                                    <p class="justify-end font-medium text-gray-800 justify-items-end inline font-bold">Date</p>
-                                </div>
-                                <p class="font-medium text-gray-800 ">15 participants</p>
-
-                                <div class="pt-4">
-                                    <label for="font-medium text-gray-800 ">Code *</label>
-                                    <input type="text" class="border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-indigo-500 focus:ring-1 rounded-md">
-                                </div>
-                                <div class="flex justify-end pt-6 items-baseline">
-                                    <button type="submit" id="btnConnexion" class="flex mt-4 bg-blue-500 font-semibold text-white py-2 px-2 hover:bg-blue-600">Valider présence</button>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- PROMOS -->
                 <div id="dashboardPromotions">
                     <div class="bg-white p-3 rounded-sm">
                         <div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
@@ -75,13 +33,12 @@ $infos_user = unserialize($infos_user);
 
                                     <h2 class="font-medium text-gray-800 text-xl inline-block">Tableau des promotions de Simplon</h2>
 
+                                    <button type="submit" id="btnAjouterPromo" class="flex mt-4 bg-green-500 font-semibold text-white py-2 px-2 hover:bg-blue-600">Ajouter promotion</button>
+
                                     <input type="text" name="nomPromo" value="La promo" id="nomPromo" class="flex border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-indigo-500 focus:ring-1 rounded-md">
                                     <input type="date" name="debutPromo" value="2024-04-17" id="debutPromo" class="flex border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-indigo-500 focus:ring-1 rounded-md">
                                     <input type="date" name="finPromo" value="2025-04-17" id="finPromo" class="flex border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-indigo-500 focus:ring-1 rounded-md">
                                     <input type="text" name="placesPromo" value="22" id="placesPromo" class="flex border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-indigo-500 focus:ring-1 rounded-md">
-
-                                    <button id="btnAjouterPromo" onclick="createPromo()" class="btnAjouterPromo flex mt-4 bg-green-500 font-semibold text-white py-2 px-2 hover:bg-blue-600">Ajouter promotion</button>
-
                                 </div>
                             </div>
                         </div>
@@ -91,28 +48,3 @@ $infos_user = unserialize($infos_user);
         </div>
     </main>
 </div>
-
-
-
-
-
-<?php include __DIR__ . '/includes/footer.php'; ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<?php include __DIR__ . '/includes/footer.php'; ?>

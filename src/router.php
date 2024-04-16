@@ -2,8 +2,10 @@
 
 
 use src\Controllers\UserController;
+use src\Controllers\GradeController;
 
 $UserController = new UserController;
+$GradeController = new GradeController;
 
 use src\Services\Routing;
 
@@ -21,7 +23,14 @@ switch ($route) {
         }
         
     case HOME_URL . 'dashboard':
+    
+        if ($methode === 'POST') {
 
+            $GradeController->createGrade();
+        } else {
+            include __DIR__ . '/Views/connexion.php';
+            break;
+        }
 
         break;
 

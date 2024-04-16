@@ -66,9 +66,6 @@ document.getElementById('btnConnexion').addEventListener('click', (e) => {
 
 
 
-
-
-
 function showMessage(message, encartClasse) {
     let encart = document.querySelector('.' + encartClasse);
     encart.classList.add('visible');

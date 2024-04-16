@@ -3,14 +3,12 @@
 namespace src\Controllers;
 
 use src\Models\User;
-use src\Repositories\ReservationRepository;
 use src\Repositories\UserRepository;
 use src\Services\Reponse;
 
 class UserController
 {
-    private $UserRepo;
-    private $ReservationRepo;
+    private $UserRepo; 
     private $User;
 
 
@@ -36,7 +34,7 @@ class UserController
             
         if ($userBD) {
             http_response_code(200);
-            
+                
                 if (password_verify($password, $userBD->getPasswordUser())) {
                     $_SESSION['connecté'] = TRUE;
                     $_SESSION['user'] = serialize($userBD);
