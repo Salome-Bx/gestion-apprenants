@@ -22,13 +22,13 @@ class GradeRepository
 
 
     // récupère toutes les promos
-    public function getAllGrades(): Grade
+    public function getAllGrades(): array|bool
     {
         $sql = "SELECT * FROM " . PREFIXE . "grade";
 
         $statement = $this->DB->prepare($sql);
         $statement->execute();
-        $statement->setFetchMode(PDO::FETCH_CLASS, Grade::class);
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
         $retour = $statement->fetch();
         return $retour;
     }
