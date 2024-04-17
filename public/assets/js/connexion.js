@@ -1,7 +1,10 @@
+console.log(document.getElementById("containerGrades"))
 // Connexion
-document.getElementById('btnConnexion').addEventListener('click', (e) => {
+// document.getElementById('btnConnexion').addEventListener('click', (e) => {
 
-    e.preventDefault();
+//     e.preventDefault();
+
+async function connexion() {
 
     let emailConnexion = document.querySelector("#inputEmailConnexion").value;
     let passwordConnexion = document.querySelector("#inputPasswordConnexion").value;
@@ -37,21 +40,94 @@ document.getElementById('btnConnexion').addEventListener('click', (e) => {
         })
         .then((data) => {
             if (data !== null && typeof data === 'object') {
-                
+
 
 
             } else if (data !== null && typeof data === 'string') {
 
-                
+
                 document.body.innerHTML = data;
-                
-                
+
+                let params = {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                }
+
+                fetch("/dashboard", params)
+
+                    .then((res) => {
+                        if (res.status === 200) {
+
+                            return res.text();
+
+                        } else {
+
+                            showMessage("Impossible d'importer promotions", "echec");
+                            hideMessage('succes');
+
+                            return res.json();
+
+                        }
+                    })
+                    .then((data) => {
+                        if (data !== null && typeof data === 'object') {
+
+
+
+                        } else if (data !== null && typeof data === 'string') {
+                           
+                            // console.log(data);
+                            let tableauGrades = JSON.parse(data);
+                            // let containerGrades = document.getElementById("containerGrades");
+                            // console.log(tableauGrades.all_grades);
+                            // document.body.innerHTML += tableauGrades.all_grades;
+
+                            function afficherTableGrade(grade) {
+                                let header = '<tr><th>Id</th><th>Nom</th><th>Nombre d\'étudiants</th><th>Date de début</th><th>Date de fin</th></tr>';
+
+                                // Créer les lignes du corps de la table
+                                let body = grade.map(grade => `
+                                    <tr>
+                                        <td>${grade.Id_Grade}</td>
+                                        <td>${grade.Name_Grade}</td>
+                                        <td>${grade.Student_Number_Grade}</td>
+                                        <td>${grade.DateStart_Grade}</td>
+                                        <td>${grade.DateEnd_Grade}</td>
+                                    </tr>
+                                `).join('');
+
+                                // Combiner l'en-tête et le corps pour créer le HTML complet de la table
+                                let tableHTML = `
+                                    <table>
+                                        <thead>${header}</thead>
+                                        <tbody>${body}</tbody>
+                                    </table>
+                                `;
+
+                                return tableHTML;
+                            }
+                            containerGrades.innerHTML = afficherTableGrade(tableauGrades.all_grades);
+                            console.log(containerGrades);
+                        }
+
+                        ;
+
+                    }
+
+                    )
+                    .catch((error) => console.error("Error:", error));
+
+
             }
 
 
         })
         .catch((error) => console.error("Error:", error));
-});
+}
+// )
+;
 
 
 

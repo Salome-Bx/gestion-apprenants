@@ -1,5 +1,5 @@
 
-// ajouter une promo
+// ajouter une promo lorsque l'on clique sur "Sauvegarder promo"
 
 function createPromo() {
     let nomPromo = document.querySelector("#nomPromo").value;
@@ -25,7 +25,7 @@ function createPromo() {
         body: JSON.stringify(PromoCrendentials),
     };
 
-    fetch("/dashboard", params)
+    fetch("/dashboard/addPromotions", params)
         .then((res) => {
             if (res.status === 200) {
                 
@@ -42,19 +42,32 @@ function createPromo() {
         })
         .then((dataProm) => {
             if (dataProm !== null && typeof dataProm === 'object') {
-                console.log(dataProm)
+                
 
             } else if (dataProm !== null && typeof dataProm === 'string') {
                 console.log(dataProm)
+                
                 document.body.innerHTML = dataProm;
 
+                
+                
+                ongletPromotions();
+                   
+                
             }
-            
+
 
 
         })
         .catch((error) => console.error("Error:", error));
 }
+
+
+
+
+
+
+
 
 function showMessage(message, encartClasse) {
     let encart = document.querySelector('.' + encartClasse);
@@ -70,4 +83,14 @@ function hideMessage(encartClasse) {
     encart.classList.add('invisible');
 
     encart.querySelector('p').innerText = '';
+}
+
+function ongletPromotions() {
+    let dashboardAfficherPromotions = document.querySelector("#dashboardAfficherPromotions");
+    let dashboardAjouterPromotions = document.querySelector("#dashboardAjouterPromotions");
+    let dashboardAccueil = document.querySelector("#dashboardAccueil"); 
+    dashboardAfficherPromotions.classList.remove("hidden");
+    dashboardAjouterPromotions.classList.remove("hidden");
+    dashboardAccueil.classList.add("hidden");
+
 }

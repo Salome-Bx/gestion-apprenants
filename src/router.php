@@ -3,9 +3,11 @@
 
 use src\Controllers\UserController;
 use src\Controllers\GradeController;
+use src\Repositories\GradeRepository;
 
 $UserController = new UserController;
 $GradeController = new GradeController;
+
 
 use src\Services\Routing;
 
@@ -25,8 +27,20 @@ switch ($route) {
     case HOME_URL . 'dashboard':
     
         if ($methode === 'POST') {
+            $GradeController->getAllGrades();
+            
+            switch ($route) {
+            case HOME_URL . 'addPromotions':
 
-            $GradeController->createGrade();
+                
+                    $GradeController->createGrade();  
+                
+                break;
+            default :
+            break;
+            }
+            break;
+           
         } else {
             include __DIR__ . '/Views/connexion.php';
             break;
