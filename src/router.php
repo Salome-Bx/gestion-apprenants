@@ -14,6 +14,9 @@ use src\Services\Routing;
 $route = $_SERVER['REDIRECT_URL'];
 $methode = $_SERVER['REQUEST_METHOD'];
 
+$routeComposee = ltrim($route, HOME_URL);
+$routeComposee = rtrim($routeComposee, '/');
+$routeComposee = explode('/', $routeComposee);
 
 switch ($route) {
     case HOME_URL:
@@ -29,18 +32,6 @@ switch ($route) {
         if ($methode === 'POST') {
             $GradeController->getAllGrades();
             
-            switch ($route) {
-            case HOME_URL . 'addPromotions':
-
-                
-                    $GradeController->createGrade();  
-                
-                break;
-            default :
-            break;
-            }
-            break;
-           
         } else {
             include __DIR__ . '/Views/connexion.php';
             break;
@@ -49,9 +40,22 @@ switch ($route) {
         break;
 
 
-    default:
+    case $routeComposee[0] == "dashboard":
+            switch ($route) {
+                case $routeComposee[1] == "addPromotions":
+                    $GradeController->createGrade(); 
+                    echo("promo ajoutée");
 
+                default:
+                    break;
+            }
+    
+    default:
         var_dump($route);
-        var_dump("fontionne pas");
+        var_dump("problème de routeur");
         break;
+
+
+
+   
 }

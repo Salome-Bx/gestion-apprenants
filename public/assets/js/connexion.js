@@ -1,8 +1,6 @@
-console.log(document.getElementById("containerGrades"))
-// Connexion
-// document.getElementById('btnConnexion').addEventListener('click', (e) => {
 
-//     e.preventDefault();
+// Connexion
+
 
 async function connexion() {
 
@@ -45,7 +43,7 @@ async function connexion() {
 
             } else if (data !== null && typeof data === 'string') {
 
-
+                // console.log(data);
                 document.body.innerHTML = data;
 
                 let params = {
@@ -80,21 +78,23 @@ async function connexion() {
                            
                             // console.log(data);
                             let tableauGrades = JSON.parse(data);
-                            // let containerGrades = document.getElementById("containerGrades");
-                            // console.log(tableauGrades.all_grades);
-                            // document.body.innerHTML += tableauGrades.all_grades;
+                            
 
                             function afficherTableGrade(grade) {
-                                let header = '<tr><th>Id</th><th>Nom</th><th>Nombre d\'étudiants</th><th>Date de début</th><th>Date de fin</th></tr>';
+                                let header = '<tr><th>Nom</th><th>Nombre d\'étudiants</th><th>Date de début</th><th>Date de fin</th></tr>';
 
                                 // Créer les lignes du corps de la table
                                 let body = grade.map(grade => `
                                     <tr>
-                                        <td>${grade.Id_Grade}</td>
+                                        
                                         <td>${grade.Name_Grade}</td>
                                         <td>${grade.Student_Number_Grade}</td>
                                         <td>${grade.DateStart_Grade}</td>
                                         <td>${grade.DateEnd_Grade}</td>
+                                        <td>Voir</td>
+                                        <td>Editer</td>
+                                        <td>Supprimer</td>
+
                                     </tr>
                                 `).join('');
 
@@ -109,10 +109,8 @@ async function connexion() {
                                 return tableHTML;
                             }
                             containerGrades.innerHTML = afficherTableGrade(tableauGrades.all_grades);
-                            console.log(containerGrades);
-                        }
-
-                        ;
+                            // console.log(containerGrades);
+                        };
 
                     }
 
