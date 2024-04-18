@@ -83,7 +83,7 @@
                                 <input type="text" name="placesPromo" value="22" id="placesPromo" class="flex border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-indigo-500 focus:ring-1 rounded-md">
 
                                 <div class="flex justify-end">
-                                    <button id="btnAjouterPromo"  class="btnAjouterPromo flex justify-end items-baseline mt-4 bg-blue-500 font-semibold text-white py-2 px-2 hover:bg-blue-600">Sauvegarder une promotion</button>
+                                    <button id="btnAjouterPromo" onclick="createPromo()" class="btnAjouterPromo flex justify-end items-baseline mt-4 bg-blue-500 font-semibold text-white py-2 px-2 hover:bg-blue-600">Sauvegarder une promotion</button>
 
                                 </div>
 

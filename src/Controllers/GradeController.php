@@ -54,7 +54,7 @@ class GradeController
         if ($gradesBD) {
             http_response_code(200);
             $_SESSION['grades'] = $gradesBD;
-            $this->render("dashboard", ["infos_grades" => $_SESSION['grades']]);
+            $this->render("dashboard/addPromotions", ["infos_grades" => $_SESSION['grades']]);
             //    ob_clean();
             echo json_encode(["status" => "succes", "message" => "Promotion créée"]);
         } else {

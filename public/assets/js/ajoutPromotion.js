@@ -11,9 +11,9 @@ function createPromo() {
 
     let PromoCrendentials = {
         NameGrade: nomPromo,
-        DateStartGrade : debutPromo,
+        DateStartGrade: debutPromo,
         DateEndGrade: finPromo,
-        StudentNumberGrade : placesPromo
+        StudentNumberGrade: placesPromo
     };
     console.log(PromoCrendentials)
 
@@ -28,7 +28,8 @@ function createPromo() {
     fetch("/dashboard/addPromotions", params)
         .then((res) => {
             if (res.status === 200) {
-                
+
+                console.log("coucou");
                 return res.text();
 
             } else {
@@ -42,18 +43,18 @@ function createPromo() {
         })
         .then((dataProm) => {
             if (dataProm !== null && typeof dataProm === 'object') {
-                
+
 
             } else if (dataProm !== null && typeof dataProm === 'string') {
-                console.log(dataProm)
-                
+                console.log(dataProm);
+                console.log("coucou2");
                 document.body.innerHTML = dataProm;
 
-                
-                
+
+
                 ongletPromotions();
-                   
-                
+
+
             }
 
 
@@ -88,7 +89,7 @@ function hideMessage(encartClasse) {
 function ongletPromotions() {
     let dashboardAfficherPromotions = document.querySelector("#dashboardAfficherPromotions");
     let dashboardAjouterPromotions = document.querySelector("#dashboardAjouterPromotions");
-    let dashboardAccueil = document.querySelector("#dashboardAccueil"); 
+    let dashboardAccueil = document.querySelector("#dashboardAccueil");
     dashboardAfficherPromotions.classList.remove("hidden");
     dashboardAjouterPromotions.classList.remove("hidden");
     dashboardAccueil.classList.add("hidden");
