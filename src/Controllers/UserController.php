@@ -17,6 +17,7 @@ class UserController
     public function __construct()
     {
         $this->UserRepo = new UserRepository();
+        $this->User = new User();
     }
 
 
@@ -30,6 +31,7 @@ class UserController
         $password = $user["password"];
         
         $userRepo = new UserRepository();
+        
         $userBD = $userRepo->findByMail($email);
             
         if ($userBD) {
@@ -37,10 +39,14 @@ class UserController
                 
                 if (password_verify($password, $userBD->getPasswordUser())) {
                     $_SESSION['connecté'] = TRUE;
-                    $_SESSION['user'] = serialize($userBD);
-                $this->render("dashboard", ["infos_user" => $_SESSION['user']]);
+                    $userBD = $userBD->getObjectToArray();
+                    
+                    
+                    $_SESSION['user'] = $userBD;
+
+                $this->render("dashboard");
                 //    ob_clean();
-                echo json_encode(["status" => "succes", "message" => "Connexion réussie"]);
+                echo json_encode(["status" => "succes", "message" => "Connexion réussie", "infos_user" => $_SESSION['user']]);
                 } else {
                     http_response_code(401);
                     echo json_encode(["status" => "erreur", "message" => "Mot de passe erroné"]);

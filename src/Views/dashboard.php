@@ -2,10 +2,10 @@
 
 <?php
 // $infos_user = unserialize($infos_user);
-
+// var_dump($infos_user);
 
 ?>
-
+<div class="user"></div>
 
 <div class="relative flex min-h-screen text-gray-800 antialiased flex-col justify-center overflow-hidden bg-gray-50 px-4 sm:py-16">
     <main>
@@ -64,8 +64,8 @@
                         </div>
                     </div>
 
-                    <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8 sm:block ">
-                        <div class="overflow-hidden px-5 border border-gray-200  md:rounded-lg">
+                    <div class="inline-block min-w-full py-3 align-middle md:px-6 lg:px-8 sm:block ">
+                        <div class="overflow-hidden px-5 py-3 border border-gray-200  md:rounded-lg">
 
                             <div class="flex flex-col">
 
@@ -74,7 +74,7 @@
                                 <input type="text" name="nomPromo" value="La promo" id="nomPromo" class="flex border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-indigo-500 focus:ring-1 rounded-md">
 
                                 <label for="debutPromo" class="w-full">Date de début</label>
-                                <input type="date" name="debutPromo" value="2024-04-17" id="debutPromo" class="flex border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-indigo-500 focus:ring-1 rounded-md">
+                                 <input type="date" name="debutPromo" value="2024-04-17" id="debutPromo" class="flex border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-indigo-500 focus:ring-1 rounded-md">
 
                                 <label for="finPromo" class="w-full">Date de fin</label>
                                 <input type="date" name="finPromo" value="2025-04-17" id="finPromo" class="flex border w-full h-5 px-3 py-5 mt-2 hover:outline-none focus:outline-none focus:ring-indigo-500 focus:ring-1 rounded-md">
@@ -103,8 +103,8 @@
                             <button id="btnAjouterPromo" onclick="createPromo()" class="btnAjouterPromo flex mt-4 bg-green-500 font-semibold text-white py-2 px-2 hover:bg-green-600">Ajouter promotion</button>
                         </div>
                     </div>
-                    <h4 class="font-medium text-gray-800 text-xl inline-block">Tableau des promotions de Simplon</h4>
-                    <div id="containerGrades" class="w-full"></div>
+                    <h4 class="font-medium text-gray-800 text-xl inline-block py-5">Tableau des promotions de Simplon</h4>
+                    <div id="containerGrades" class="flex flex-col justifiy-center w-full"></div>
 
 
                 </div>

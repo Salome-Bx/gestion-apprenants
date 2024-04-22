@@ -32,7 +32,11 @@ class UserRepository
         ]);
         $statement->setFetchMode(PDO::FETCH_CLASS, User::class);
         $retour = $statement->fetch();
+       
         return $retour;
+
+
+
     }
 
     

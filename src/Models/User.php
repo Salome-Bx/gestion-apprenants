@@ -16,6 +16,7 @@ class User {
 
     use Hydratation;
 
+    
 
 
 
@@ -144,4 +145,13 @@ class User {
 
         return $this;
     }
+
+
+    public function getObjectToArray(): array
+    {
+        return ['Id_User' => $this->getIdUser(), 'LastName_User' => $this->getLastNameUser(), 'FirstName_User' => $this->getFirstNameUser(), 'Password_User' => $this->getPasswordUser(), 'Activated_User' => $this->isActivatedUser(), 'Email_User' => $this->getEmailUser(), 'Id_Role' => $this->getIdRole()];
+    }
+
+
+
 }
