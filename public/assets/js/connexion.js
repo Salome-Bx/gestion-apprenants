@@ -42,8 +42,8 @@ async function connexion() {
 
 
             } else if (data !== null && typeof data === 'string') {
+               
 
-                // console.log(data);
                 document.body.innerHTML = data;
 
                 let params = {
@@ -81,19 +81,19 @@ async function connexion() {
                             
 
                             function afficherTableGrade(grade) {
-                                let header = '<tr><th>Nom</th><th>Nombre d\'étudiants</th><th>Date de début</th><th>Date de fin</th></tr>';
+                                let header = '<tr><th class="pb-3 px-3 text-left">Nom</th><th class="pb-3 px-3 text-left">Nombre d\'étudiants</th><th class="pb-3 px-3 text-left">Date de début</th><th class="pb-3 px-3 text-left">Date de fin</th></tr>';
 
                                 // Créer les lignes du corps de la table
                                 let body = grade.map(grade => `
-                                    <tr>
-                                        
-                                        <td>${grade.Name_Grade}</td>
-                                        <td>${grade.Student_Number_Grade}</td>
-                                        <td>${grade.DateStart_Grade}</td>
-                                        <td>${grade.DateEnd_Grade}</td>
-                                        <td>Voir</td>
-                                        <td>Editer</td>
-                                        <td>Supprimer</td>
+                                    <tr class="">
+                                    
+                                    <td class="pb-3 px-3">${grade.Name_Grade}</td>
+                                    <td class="pb-3 px-3">${grade.Student_Number_Grade}</td>
+                                    <td class="pb-3 px-3">${grade.DateStart_Grade}</td>
+                                    <td class="pb-3 px-3">${grade.DateEnd_Grade}</td>
+                                    <td class="pb-3 px-3"> <a href="#" class="text-blue-500"> Voir </a> </td>
+                                    <td class="pb-3 px-3"> <a href="#" class="text-blue-500"> Editer </a> </td>
+                                    <td class="pb-3 px-3"> <a href="#" class="text-blue-500"> Supprimer </a> </td>
 
                                     </tr>
                                 `).join('');
@@ -109,7 +109,7 @@ async function connexion() {
                                 return tableHTML;
                             }
                             containerGrades.innerHTML = afficherTableGrade(tableauGrades.all_grades);
-                            // console.log(containerGrades);
+                            
                         };
 
                     }

@@ -28,7 +28,7 @@ class GradeController
         
         $gradeRepo = new GradeRepository();
         $allGradesBD = $gradeRepo->getAllGrades();
-        // var_dump($allGradesBD);
+        
 
         if ($allGradesBD) {
             http_response_code(200);
@@ -47,7 +47,7 @@ class GradeController
         $dataGrade = file_get_contents("php://input");
         $grade = json_decode($dataGrade, true);
         $dataGrade = new Grade($grade);
-        // var_dump($dataGrade);
+        
         $gradeRepo = new GradeRepository();
         $gradesBD = $gradeRepo->createGrade($dataGrade);
 

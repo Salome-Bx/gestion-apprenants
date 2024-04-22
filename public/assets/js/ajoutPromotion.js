@@ -29,7 +29,7 @@ function createPromo() {
         .then((res) => {
             if (res.status === 200) {
 
-                console.log("coucou");
+                
                 return res.text();
 
             } else {
@@ -46,11 +46,8 @@ function createPromo() {
 
 
             } else if (dataProm !== null && typeof dataProm === 'string') {
-                console.log(dataProm);
-                console.log("coucou2");
+                
                 document.body.innerHTML = dataProm;
-
-
 
                 ongletPromotions();
 
